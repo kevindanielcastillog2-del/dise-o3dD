@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Centro de Interés – Diseño 3D | IE John F. Kennedy</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@300;400;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{--cyan:#00f5ff;--purple:#bf00ff;--pink:#ff0090;--gold:#ffd700;--green:#00ff88;--orange:#ff6b00;--dark:#04030a;--card:rgba(255,255,255,0.04);--border:rgba(0,245,255,0.2);}
+body{background:var(--dark);font-family:'Rajdhani','Arial Narrow',Arial,sans-serif;color:#fff;min-height:100vh;}
+.bg-grid{position:fixed;inset:0;z-index:0;background-image:linear-gradient(rgba(0,245,255,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(0,245,255,0.05) 1px,transparent 1px);background-size:40px 40px;animation:gridPulse 8s ease-in-out infinite;}
+@keyframes gridPulse{0%,100%{opacity:.5}50%{opacity:1}}
+.bg-glow{position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse 60% 40% at 20% 20%,rgba(191,0,255,0.08) 0%,transparent 70%),radial-gradient(ellipse 50% 35% at 80% 80%,rgba(0,245,255,0.08) 0%,transparent 70%);}
+.wrap{position:relative;z-index:10;max-width:780px;margin:0 auto;padding:40px 20px 60px;}
+
+/* INSTITUCIÓN */
+.inst-banner{display:flex;align-items:center;justify-content:center;gap:16px;background:rgba(0,245,255,0.05);border:1px solid rgba(0,245,255,0.15);border-radius:5px;padding:14px 24px;margin-bottom:20px;flex-wrap:wrap;}
+.inst-logo{font-size:32px;}
+.inst-info{text-align:center;}
+.inst-name{font-family:'Bebas Neue','Arial Black',Arial,sans-serif;font-size:20px;letter-spacing:2px;color:#fff;}
+.inst-sub{font-family:'Orbitron',monospace;font-size:9px;letter-spacing:3px;color:var(--cyan);opacity:.75;text-transform:uppercase;}
+.inst-sep{width:1px;height:40px;background:rgba(0,245,255,0.2);}
+.docente-info{text-align:center;}
+.docente-label{font-family:'Orbitron',monospace;font-size:8px;letter-spacing:3px;color:var(--purple);opacity:.8;text-transform:uppercase;display:block;margin-bottom:3px;}
+.docente-name{font-family:'Bebas Neue','Arial Black',Arial,sans-serif;font-size:18px;letter-spacing:2px;color:#fff;filter:drop-shadow(0 0 8px rgba(191,0,255,.5));}
+
+/* HERO */
+.hero{text-align:center;padding:50px 40px 40px;background:linear-gradient(145deg,#0d0a1e,#07040f,#0a0518);border:1px solid var(--border);border-radius:6px;position:relative;overflow:hidden;margin-bottom:24px;box-shadow:0 0 60px rgba(0,245,255,0.1),0 0 120px rgba(191,0,255,0.08);}
+.hero::before{content:'';position:absolute;top:12px;left:12px;width:22px;height:22px;border-top:2px solid var(--cyan);border-left:2px solid var(--cyan);}
+.hero::after{content:'';position:absolute;top:12px;right:12px;width:22px;height:22px;border-top:2px solid var(--cyan);border-right:2px solid var(--cyan);}
+.corner-bl{position:absolute;bottom:12px;left:12px;width:22px;height:22px;border-bottom:2px solid var(--cyan);border-left:2px solid var(--cyan);}
+.corner-br-el{position:absolute;bottom:12px;right:12px;width:22px;height:22px;border-bottom:2px solid var(--cyan);border-right:2px solid var(--cyan);}
+.hero-tag{font-family:'Orbitron',monospace;font-size:10px;letter-spacing:6px;color:var(--cyan);opacity:.8;text-transform:uppercase;margin-bottom:16px;}
+.cube-wrap{display:flex;justify-content:center;margin-bottom:20px;animation:cubeFloat 4s ease-in-out infinite;}
+@keyframes cubeFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+.cube-svg{filter:drop-shadow(0 0 20px #00f5ff) drop-shadow(0 0 45px rgba(191,0,255,.6));}
+.hero-title{font-family:'Bebas Neue','Arial Black',Arial,sans-serif;font-size:clamp(68px,14vw,100px);line-height:.85;background:linear-gradient(135deg,#fff 0%,var(--cyan) 40%,var(--purple) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 0 30px rgba(0,245,255,.4));margin-bottom:4px;}
+.hero-sub{font-family:'Bebas Neue','Arial Black',Arial,sans-serif;font-size:clamp(32px,6vw,48px);color:var(--purple);letter-spacing:12px;filter:drop-shadow(0 0 14px var(--purple));margin-bottom:28px;}
+.divider{display:flex;align-items:center;gap:14px;margin-bottom:24px;}
+.divider-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--cyan),transparent);}
+.divider-diamond{width:8px;height:8px;background:var(--cyan);transform:rotate(45deg);box-shadow:0 0 10px var(--cyan);}
+.hero-desc{font-size:17px;font-weight:300;color:rgba(255,255,255,.8);line-height:1.75;max-width:500px;margin:0 auto 32px;}
+.hero-desc strong{color:#fff;font-weight:700;}
+.glow-bar{position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--cyan),var(--purple),var(--pink),transparent);animation:barScan 3s linear infinite;}
+@keyframes barScan{0%{opacity:.3;transform:scaleX(.4)}50%{opacity:1;transform:scaleX(1)}100%{opacity:.3;transform:scaleX(.4)}}
+
+/* SECTION TITLE */
+.section-title{font-family:'Orbitron',monospace;font-size:11px;letter-spacing:5px;color:var(--cyan);text-transform:uppercase;text-align:center;margin-bottom:16px;opacity:.85;}
+
+/* TEMAS */
+.temas-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px;}
+.tema-card{background:var(--card);border:1px solid var(--border);border-radius:5px;padding:22px 20px;position:relative;overflow:hidden;transition:border-color .3s,transform .3s,box-shadow .3s;text-decoration:none;display:block;color:inherit;}
+.tema-card:hover{border-color:var(--cyan);transform:translateY(-4px);box-shadow:0 8px 30px rgba(0,245,255,.15);}
+.tema-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--accent);}
+.tema-card.t1{--accent:linear-gradient(90deg,#00f5ff,#00b4ff);}
+.tema-card.t2{--accent:linear-gradient(90deg,#bf00ff,#ff0090);}
+.tema-card.t3{--accent:linear-gradient(90deg,#ffd700,#ff8c00);}
+.tema-card.t4{--accent:linear-gradient(90deg,#00ff88,#00b4ff);}
+.tema-card.t5{--accent:linear-gradient(90deg,#ff0090,#bf00ff);}
+.tema-card.t6{--accent:linear-gradient(90deg,#00f5ff,#00ff88);}
+.tema-icon{font-size:36px;margin-bottom:12px;display:block;}
+.tema-name{font-family:'Bebas Neue','Arial Black',Arial,sans-serif;font-size:22px;letter-spacing:1px;color:#fff;margin-bottom:8px;}
+.tema-desc{font-size:13px;font-weight:300;color:rgba(255,255,255,.65);line-height:1.6;}
+.tema-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.tag-pill{font-size:10px;font-weight:600;letter-spacing:1px;color:var(--cyan);background:rgba(0,245,255,.08);border:1px solid rgba(0,245,255,.25);border-radius:20px;padding:3px 10px;text-transform:uppercase;}
+.tema-link-hint{margin-top:12px;font-size:11px;color:var(--cyan);opacity:.6;font-family:'Orbitron',monospace;letter-spacing:1px;}
+
+/* IMPRESION 3D - sección especial */
+.print3d-section{background:linear-gradient(135deg,rgba(255,107,0,0.07),rgba(255,0,144,0.05));border:1px solid rgba(255,107,0,0.35);border-radius:5px;padding:30px 28px;margin-bottom:24px;position:relative;overflow:hidden;}
+.print3d-section::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--orange),var(--pink),transparent);}
+.print3d-section::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--orange),var(--pink),transparent);}
+.print3d-hero{display:flex;align-items:center;gap:22px;margin:20px 0 22px;}
+.print3d-icon-wrap{position:relative;flex-shrink:0;}
+.print3d-big-icon{font-size:64px;display:block;animation:printerPulse 3s ease-in-out infinite;}
+@keyframes printerPulse{0%,100%{filter:drop-shadow(0 0 8px rgba(255,107,0,.4))}50%{filter:drop-shadow(0 0 22px rgba(255,107,0,.9))}}
+.print3d-intro h3{font-family:'Bebas Neue','Arial Black',Arial,sans-serif;font-size:30px;letter-spacing:2px;color:var(--orange);filter:drop-shadow(0 0 10px rgba(255,107,0,.5));margin-bottom:8px;}
+.print3d-intro p{font-size:14px;color:rgba(255,255,255,.78);line-height:1.6;}
+.print3d-intro p strong{color:#fff;}
+
+/* Proceso de impresión paso a paso */
+.process-title{font-family:'Orbitron',monospace;font-size:10px;letter-spacing:4px;color:var(--orange);text-transform:uppercase;margin-bottom:14px;opacity:.85;}
+.process-steps{display:flex;flex-direction:column;gap:10px;margin-bottom:22px;}
+.process-step{display:flex;align-items:flex-start;gap:14px;background:rgba(255,107,0,0.05);border:1px solid rgba(255,107,0,0.15);border-radius:4px;padding:13px 16px;transition:border-color .3s;}
+.process-step:hover{border-color:rgba(255,107,0,0.5);}
+.step-num{font-family:'Orbitron',monospace;font-size:18px;font-weight:900;color:var(--orange);min-width:36px;line-height:1;filter:drop-shadow(0 0 8px rgba(255,107,0,.6));}
+.step-content h4{font-family:'Bebas Neue','Arial Black',Arial,sans-serif;font-size:17px;letter-spacing:1px;color:#fff;margin-bottom:3px;}
+.step-content p{font-size:13px;color:rgba(255,255,255,.6);line-height:1.5;}
+
+/* Materiales */
+.materials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:22px;}
+.material-card{background:rgba(255,107,0,0.05);border:1px solid rgba(255,107,0,0.15);border-radius:4px;padding:14px 12px;text-align:center;transition:border-color .3s,transform .3s;}
+.material-card:hover{border-color:rgba(255,107,0,0.5);transform:translateY(-3px);}
+.mat-icon{font-size:26px;margin-bottom:8px;display:block;}
+.mat-name{font-family:'Bebas Neue','Arial Black',Arial,sans-serif;font-size:15px;color:#fff;letter-spacing:1px;margin-bottom:4px;}
+.mat-desc{font-size:11px;color:rgba(255,255,255,.55);line-height:1.4;}
+
+/* Softwares */
+.software-row{display:flex;flex-wrap:wrap;gap:10px;}
+.sw-pill{display:flex;align-items:center;gap:8px;background:rgba(255,107,0,0.07);border:1px solid rgba(255,107,0,0.2);border-radius:30px;padding:8px 16px;text-decoration:none;color:inherit;transition:border-color .3s,background .3s;}
+.sw-pill:hover{border-color:var(--orange);background:rgba(255,107,0,0.15);}
+.sw-icon{font-size:16px;}
+.sw-name{font-size:12px;font-weight:600;color:rgba(255,255,255,.85);}
+
+/* COMPETENCIAS */
+.comp-section{background:linear-gradient(135deg,rgba(191,0,255,0.06),rgba(0,245,255,0.04));border:1px solid rgba(191,0,255,0.3);border-radius:5px;padding:30px 28px;margin-bottom:24px;position:relative;overflow:hidden;}
+.comp-section::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--purple),transparent);}
+.comp-list{list-style:none;display:flex;flex-direction:column;gap:12px;margin-top:20px;}
+.comp-item{display:flex;align-items:flex-start;gap:14px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:4px;padding:14px 16px;transition:border-color .3s;}
+.comp-item:hover{border-color:rgba(191,0,255,0.4);}
+.comp-num{font-family:'Orbitron',monospace;font-size:11px;color:var(--purple);font-weight:700;min-width:28px;padding-top:2px;}
+.comp-text{font-size:14px;color:rgba(255,255,255,.85);line-height:1.5;}
+.comp-text strong{color:#fff;}
+
+/* PRODUCTO FINAL */
+.producto-section{background:linear-gradient(135deg,rgba(0,255,136,0.05),rgba(0,245,255,0.04));border:1px solid rgba(0,255,136,0.3);border-radius:5px;padding:30px 28px;margin-bottom:24px;position:relative;overflow:hidden;}
+.producto-section::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--green),transparent);}
+.producto-hero{display:flex;align-items:center;gap:20px;background:rgba(0,255,136,0.06);border:1px solid rgba(0,255,136,0.2);border-radius:4px;padding:20px 22px;margin:20px 0 16px;}
+.prod-icon{font-size:48px;}
+.prod-info h3{font-family:'Bebas Neue','Arial Black',Arial,sans-serif;font-size:26px;letter-spacing:1px;color:var(--green);margin-bottom:6px;filter:drop-shadow(0 0 10px rgba(0,255,136,.5));}
+.prod-info p{font-size:14px;color:rgba(255,255,255,.75);line-height:1.55;}
+.prod-features{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.prod-feat{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.03);border:1px solid rgba(0,255,136,.1);border-radius:4px;padding:10px 14px;}
+.prod-feat-icon{font-size:18px;}
+.prod-feat-text{font-size:13px;font-weight:600;color:rgba(255,255,255,.85);}
+
+/* CTA */
+.cta-section{text-align:center;background:linear-gradient(145deg,#0d0a1e,#07040f);border:1px solid var(--border);border-radius:5px;padding:40px 30px;position:relative;overflow:hidden;}
+.cta-section::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--cyan),var(--purple),var(--pink));}
+.cta-title{font-family:'Bebas Neue','Arial Black',Arial,sans-serif;font-size:clamp(30px,5vw,44px);background:linear-gradient(135deg,#fff,var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:10px;}
+.cta-sub{font-size:15px;color:rgba(255,255,255,.65);margin-bottom:28px;}
+.cta-buttons{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-bottom:28px;}
+.cta-btn{display:inline-block;font-family:'Orbitron',monospace;font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#04030a;background:linear-gradient(90deg,var(--cyan),var(--purple));border:none;padding:16px 36px;cursor:pointer;clip-path:polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%);animation:btnPulse 3s ease-in-out infinite;text-decoration:none;position:relative;overflow:hidden;transition:transform .2s;}
+.cta-btn:hover{transform:scale(1.05);}
+.cta-btn.secondary{background:linear-gradient(90deg,var(--purple),var(--pink));animation-delay:.5s;}
+.cta-btn.tertiary{background:linear-gradient(90deg,var(--green),var(--cyan));animation-delay:1s;}
+.cta-btn::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);transform:translateX(-100%);animation:shine 2.5s ease-in-out infinite;}
+@keyframes btnPulse{0%,100%{box-shadow:0 0 20px rgba(0,245,255,.4),0 0 40px rgba(191,0,255,.2)}50%{box-shadow:0 0 40px rgba(0,245,255,.7),0 0 70px rgba(191,0,255,.4)}}
+@keyframes shine{0%{transform:translateX(-100%)}60%,100%{transform:translateX(200%)}}
+.info-row{display:flex;justify-content:center;gap:32px;flex-wrap:wrap;}
+.info-item{text-align:center;}
+.info-label{font-family:'Orbitron',monospace;font-size:9px;letter-spacing:3px;color:var(--cyan);opacity:.7;text-transform:uppercase;display:block;margin-bottom:4px;}
+.info-value{font-size:16px;font-weight:700;color:#fff;}
+.footer{text-align:center;margin-top:28px;padding-top:20px;border-top:1px solid rgba(0,245,255,0.1);}
+.footer-text{font-family:'Orbitron',monospace;font-size:9px;letter-spacing:3px;color:rgba(255,255,255,.3);text-transform:uppercase;}
+.footer-text span{color:var(--cyan);opacity:.7;}
+
+@media(max-width:560px){
+  .temas-grid{grid-template-columns:1fr;}
+  .prod-features{grid-template-columns:1fr;}
+  .materials-grid{grid-template-columns:1fr 1fr;}
+  .hero{padding:40px 20px 36px;}
+  .cta-buttons{flex-direction:column;align-items:center;}
+  .inst-sep{display:none;}
+  .print3d-hero{flex-direction:column;text-align:center;}
+}
+</style>
+</head>
+<body>
+<div class="bg-grid"></div>
+<div class="bg-glow"></div>
+<div class="wrap">
+
+  <!-- INSTITUCIÓN + DOCENTE -->
+  <div class="inst-banner">
+    <div class="inst-logo">🏫</div>
+    <div class="inst-info">
+      <div class="inst-name">IE John F. Kennedy</div>
+      <div class="inst-sub">Institución Educativa</div>
+    </div>
+    <div class="inst-sep"></div>
+    <div class="docente-info">
+      <span class="docente-label">Docente</span>
+      <div class="docente-name">Kevin Castillo</div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="corner-bl"></div><div class="corner-br-el"></div>
+    <div class="hero-tag">✦ Centro de Interés Estudiantil ✦</div>
+    <div class="cube-wrap">
+      <svg class="cube-svg" width="100" height="100" viewBox="0 0 100 100" fill="none">
+        <polygon points="50,6 90,26 50,46 10,26" fill="rgba(0,245,255,0.14)" stroke="#00f5ff" stroke-width="1.5"/>
+        <polygon points="10,26 50,46 50,90 10,70" fill="rgba(191,0,255,0.14)" stroke="#bf00ff" stroke-width="1.5"/>
+        <polygon points="90,26 50,46 50,90 90,70" fill="rgba(255,0,144,0.1)" stroke="#ff0090" stroke-width="1.5"/>
+        <line x1="50" y1="6" x2="50" y2="46" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+        <circle cx="50" cy="46" r="3.5" fill="#00f5ff"/>
+        <circle cx="50" cy="6" r="3" fill="#00f5ff"/>
+        <circle cx="90" cy="26" r="2.5" fill="#ff0090"/>
+        <circle cx="10" cy="26" r="2.5" fill="#bf00ff"/>
+        <circle cx="50" cy="90" r="3" fill="#ffd700"/>
+      </svg>
+    </div>
+    <div class="hero-title">DISEÑO</div>
+    <div class="hero-sub">3 D</div>
+    <div class="divider"><div class="divider-line"></div><div class="divider-diamond"></div><div class="divider-line"></div></div>
+    <p class="hero-desc">¿Te apasiona <strong>crear, modelar y dar vida</strong> a tus ideas? Únete a nuestro espacio donde el arte digital y la tecnología se fusionan para construir el <strong>futuro visual</strong>. Aprenderás desde cero todo lo que necesitas para convertirte en un <strong>creador 3D profesional</strong>.</p>
+    <div class="glow-bar"></div>
+  </div>
+
+  <!-- TEMAS -->
+  <p class="section-title">— Lo que aprenderás —</p>
+  <div class="temas-grid">
+    <a class="tema-card t1" href="https://www.blender.org/support/tutorials/" target="_blank">
+      <span class="tema-icon">🧊</span>
+      <div class="tema-name">Modelado 3D</div>
+      <p class="tema-desc">Construye objetos, personajes y escenarios desde cero usando modelado poligonal, subdivisions y escultura digital con herramientas profesionales.</p>
+      <div class="tema-tags"><span class="tag-pill">Blender</span><span class="tag-pill">Polígonos</span><span class="tag-pill">Escultura</span></div>
+      <div class="tema-link-hint">↗ Ver tutoriales</div>
+    </a>
+    <a class="tema-card t2" href="https://docs.blender.org/manual/es/latest/render/materials/index.html" target="_blank">
+      <span class="tema-icon">🎨</span>
+      <div class="tema-name">Texturizado</div>
+      <p class="tema-desc">Dale vida a tus modelos con materiales realistas. Aprende UV Unwrapping, pintado de texturas, mapas de normales y PBR para resultados fotorrealistas.</p>
+      <div class="tema-tags"><span class="tag-pill">UV Maps</span><span class="tag-pill">PBR</span><span class="tag-pill">Shaders</span></div>
+      <div class="tema-link-hint">↗ Ver documentación</div>
+    </a>
+    <a class="tema-card t3" href="https://docs.blender.org/manual/es/latest/render/lights/index.html" target="_blank">
+      <span class="tema-icon">💡</span>
+      <div class="tema-name">Iluminación</div>
+      <p class="tema-desc">Domina la luz como director de fotografía. Trabaja con HDRI, iluminación de tres puntos, luces de área y ambiental para crear atmósferas únicas.</p>
+      <div class="tema-tags"><span class="tag-pill">HDRI</span><span class="tag-pill">Luces</span><span class="tag-pill">Sombras</span></div>
+      <div class="tema-link-hint">↗ Ver documentación</div>
+    </a>
+    <a class="tema-card t4" href="https://docs.blender.org/manual/es/latest/animation/index.html" target="_blank">
+      <span class="tema-icon">🎬</span>
+      <div class="tema-name">Animación</div>
+      <p class="tema-desc">Pon en movimiento tus creaciones. Desde keyframes básicos hasta rigging de personajes, curvas de animación y simulaciones de físicas.</p>
+      <div class="tema-tags"><span class="tag-pill">Keyframes</span><span class="tag-pill">Rigging</span><span class="tag-pill">Físicas</span></div>
+      <div class="tema-link-hint">↗ Ver documentación</div>
+    </a>
+    <a class="tema-card t5" href="https://docs.blender.org/manual/es/latest/render/index.html" target="_blank">
+      <span class="tema-icon">📸</span>
+      <div class="tema-name">Renderizado</div>
+      <p class="tema-desc">Convierte tus escenas en imágenes y videos de alta calidad. Aprende Cycles y EEVEE, configuración de cámara y post-producción digital.</p>
+      <div class="tema-tags"><span class="tag-pill">Cycles</span><span class="tag-pill">EEVEE</span><span class="tag-pill">Output</span></div>
+      <div class="tema-link-hint">↗ Ver documentación</div>
+    </a>
+    <a class="tema-card t6" href="https://docs.blender.org/manual/es/latest/compositing/index.html" target="_blank">
+      <span class="tema-icon">🌐</span>
+      <div class="tema-name">Composición Digital</div>
+      <p class="tema-desc">Integra tus renders en entornos reales o digitales. Composición en el nodo compositor, capas de render y efectos visuales profesionales.</p>
+      <div class="tema-tags"><span class="tag-pill">Compositor</span><span class="tag-pill">VFX</span><span class="tag-pill">Nodos</span></div>
+      <div class="tema-link-hint">↗ Ver documentación</div>
+    </a>
+  </div>
+
+  <!-- IMPRESIÓN 3D -->
+  <div class="print3d-section">
+    <p class="section-title" style="color:var(--orange);">— Impresión 3D —</p>
+
+    <div class="print3d-hero">
+      <div class="print3d-icon-wrap">
+        <span class="print3d-big-icon">🖨️</span>
+      </div>
+      <div class="print3d-intro">
+        <h3>Del Diseño a la Realidad</h3>
+        <p>La impresión 3D te permite <strong>materializar tus creaciones digitales</strong> en objetos físicos reales. Aprenderás a preparar tus modelos, configurar la impresora y obtener piezas de alta calidad usando tecnología <strong>FDM y resina</strong>.</p>
+      </div>
+    </div>
+
+    <div class="process-title">Proceso de impresión paso a paso</div>
+    <div class="process-steps">
+      <div class="process-step">
+        <span class="step-num">01</span>
+        <div class="step-content">
+          <h4>Diseño del modelo 3D</h4>
+          <p>Crea o descarga tu modelo 3D en Blender. Asegúrate de que sea una malla cerrada (watertight) sin errores de geometría para que sea imprimible.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <span class="step-num">02</span>
+        <div class="step-content">
+          <h4>Exportación a STL / OBJ</h4>
+          <p>Exporta tu modelo en formato STL o OBJ, los formatos estándar para impresión 3D. Revisa escala y orientación antes de exportar.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <span class="step-num">03</span>
+        <div class="step-content">
+          <h4>Laminado (Slicing)</h4>
+          <p>Usa un software laminador como Cura o PrusaSlicer para convertir el modelo en capas. Configura temperatura, velocidad, relleno y soportes.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <span class="step-num">04</span>
+        <div class="step-content">
+          <h4>Impresión y calibración</h4>
+          <p>Envía el archivo G-Code a la impresora. Aprende a calibrar la cama, la temperatura del extrusor y la velocidad para obtener impresiones perfectas.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <span class="step-num">05</span>
+        <div class="step-content">
+          <h4>Acabado y post-proceso</h4>
+          <p>Retira soportes, lija, pinta o pule tu pieza. Aprende técnicas de acabado profesional para que tu objeto físico luzca increíble.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="process-title">Materiales de impresión</div>
+    <div class="materials-grid">
+      <div class="material-card">
+        <span class="mat-icon">🌱</span>
+        <div class="mat-name">PLA</div>
+        <p class="mat-desc">El más usado. Fácil de imprimir, biodegradable, ideal para principiantes y proyectos educativos.</p>
+      </div>
+      <div class="material-card">
+        <span class="mat-icon">⚙️</span>
+        <div class="mat-name">ABS</div>
+        <p class="mat-desc">Resistente al calor e impacto. Ideal para piezas funcionales y mecánicas que necesitan durabilidad.</p>
+      </div>
+      <div class="material-card">
+        <span class="mat-icon">🔮</span>
+        <div class="mat-name">Resina</div>
+        <p class="mat-desc">Alta resolución y detalle. Perfecta para figuras, prototipos y piezas con acabado superficial fino.</p>
+      </div>
+      <div class="material-card">
+        <span class="mat-icon">🧲</span>
+        <div class="mat-name">PETG</div>
+        <p class="mat-desc">Flexible y resistente. Combina lo mejor del PLA y ABS, apto para piezas que necesitan algo de elasticidad.</p>
+      </div>
+      <div class="material-card">
+        <span class="mat-icon">✨</span>
+        <div class="mat-name">TPU</div>
+        <p class="mat-desc">Material flexible y elástico. Ideal para protectores, suelas, juntas y objetos que deben doblarse sin romperse.</p>
+      </div>
+      <div class="material-card">
+        <span class="mat-icon">🪵</span>
+        <div class="mat-name">Wood PLA</div>
+        <p class="mat-desc">PLA con fibra de madera. Da apariencia y textura de madera real, ideal para arte y decoración 3D.</p>
+      </div>
+    </div>
+
+    <div class="process-title">Softwares de laminado</div>
+    <div class="software-row">
+      <a class="sw-pill" href="https://ultimaker.com/software/ultimaker-cura/" target="_blank"><span class="sw-icon">🟠</span><span class="sw-name">Ultimaker Cura</span></a>
+      <a class="sw-pill" href="https://www.prusa3d.com/prusaslicer/" target="_blank"><span class="sw-icon">🟣</span><span class="sw-name">PrusaSlicer</span></a>
+      <a class="sw-pill" href="https://bambulab.com/en/software/bambu-studio" target="_blank"><span class="sw-icon">🟢</span><span class="sw-name">Bambu Studio</span></a>
+      <a class="sw-pill" href="https://www.meshmixer.com/" target="_blank"><span class="sw-icon">🔵</span><span class="sw-name">Meshmixer</span></a>
+      <a class="sw-pill" href="https://www.thingiverse.com/" target="_blank"><span class="sw-icon">🔶</span><span class="sw-name">Thingiverse</span></a>
+    </div>
+  </div>
+
+  <!-- COMPETENCIAS -->
+  <div class="comp-section">
+    <p class="section-title">— Competencias que desarrollarás —</p>
+    <ul class="comp-list">
+      <li class="comp-item"><span class="comp-num">01</span><span class="comp-text"><strong>Pensamiento espacial y visual:</strong> Imaginar, interpretar y representar objetos en tres dimensiones con precisión y creatividad.</span></li>
+      <li class="comp-item"><span class="comp-num">02</span><span class="comp-text"><strong>Manejo de software especializado:</strong> Uso profesional de Blender y herramientas de laminado para modelar, texturizar, iluminar y preparar modelos para impresión.</span></li>
+      <li class="comp-item"><span class="comp-num">03</span><span class="comp-text"><strong>Creatividad y diseño artístico:</strong> Desarrollo del sentido estético para crear composiciones visuales y objetos físicos originales con impacto real.</span></li>
+      <li class="comp-item"><span class="comp-num">04</span><span class="comp-text"><strong>Resolución de problemas técnicos:</strong> Identificar y corregir errores en geometría, configuración de impresión y calibración de equipos.</span></li>
+      <li class="comp-item"><span class="comp-num">05</span><span class="comp-text"><strong>Fabricación digital:</strong> Comprender el proceso completo desde el modelo digital hasta la pieza física impresa, incluyendo post-proceso y acabado.</span></li>
+      <li class="comp-item"><span class="comp-num">06</span><span class="comp-text"><strong>Trabajo por proyectos:</strong> Planificación, desarrollo y entrega de proyectos creativos completos siguiendo un proceso de producción digital estructurado.</span></li>
+      <li class="comp-item"><span class="comp-num">07</span><span class="comp-text"><strong>Comunicación visual y presentación:</strong> Exponer y defender creaciones digitales y físicas ante una audiencia, argumentando decisiones de diseño con claridad.</span></li>
+    </ul>
+  </div>
+
+  <!-- PRODUCTO FINAL -->
+  <div class="producto-section">
+    <p class="section-title">— Producto final —</p>
+    <div class="producto-hero">
+      <div class="prod-icon">🏆</div>
+      <div class="prod-info">
+        <h3>Portafolio 3D Digital + Pieza Física</h3>
+        <p>Al finalizar, cada estudiante habrá construido un <strong>portafolio profesional digital</strong> y habrá materializado al menos uno de sus diseños en un <strong>objeto físico impreso en 3D</strong>, listo para exponer y presentar.</p>
+      </div>
+    </div>
+    <div class="prod-features">
+      <div class="prod-feat"><span class="prod-feat-icon">🧊</span><span class="prod-feat-text">Modelo 3D original terminado</span></div>
+      <div class="prod-feat"><span class="prod-feat-icon">🖨️</span><span class="prod-feat-text">Pieza física impresa en 3D</span></div>
+      <div class="prod-feat"><span class="prod-feat-icon">🎬</span><span class="prod-feat-text">Animación o cortometraje 3D</span></div>
+      <div class="prod-feat"><span class="prod-feat-icon">🖼️</span><span class="prod-feat-text">Render fotorrealista final</span></div>
+      <div class="prod-feat"><span class="prod-feat-icon">📂</span><span class="prod-feat-text">Portafolio digital presentable</span></div>
+      <div class="prod-feat"><span class="prod-feat-icon">🎓</span><span class="prod-feat-text">Certificado de participación</span></div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <div class="cta-title">¿Listo para crear el futuro?</div>
+    <p class="cta-sub">Las plazas son limitadas — ¡No te quedes por fuera, estudiante Kennedy!</p>
+    <div class="cta-buttons">
+      <a class="cta-btn" href="https://www.blender.org/download/" target="_blank">⬇ Descargar Blender</a>
+      <a class="cta-btn secondary" href="https://www.youtube.com/@blender" target="_blank">▶ Tutoriales YouTube</a>
+      <a class="cta-btn tertiary" href="https://ultimaker.com/software/ultimaker-cura/" target="_blank">🖨️ Descargar Cura</a>
+    </div>
+    <div class="info-row">
+      <div class="info-item"><span class="info-label">Nivel</span><span class="info-value">Todos</span></div>
+      <div class="info-item"><span class="info-label">Modalidad</span><span class="info-value">Presencial</span></div>
+      <div class="info-item"><span class="info-label">Plazas</span><span class="info-value">Limitadas</span></div>
+      <div class="info-item"><span class="info-label">Herramienta</span><span class="info-value">Blender</span></div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p class="footer-text">IE John F. Kennedy &nbsp;·&nbsp; <span>Docente Kevin Castillo</span> &nbsp;·&nbsp; Centro de Interés Diseño 3D e Impresión 3D</p>
+  </div>
+
+</div>
+</body>
+</html>
